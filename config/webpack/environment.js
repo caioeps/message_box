@@ -1,3 +1,6 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
+const sharedConfig = require('./shared');
 
-module.exports = environment
+environment.config.merge(sharedConfig);
+
+module.exports = environment;
