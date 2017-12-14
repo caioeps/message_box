@@ -3,6 +3,6 @@ Rails.application.routes.draw do
     controllers: {
       passwords: "users/passwords",
       sessions: "users/sessions",
-      registrations: "user/registrations"
+      registrations: "users/registrations"
     }
 end
