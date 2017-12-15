@@ -1,0 +1,14 @@
+pt-BR:
+  users:
+    authentication:
+      minimum_password_length: Pelo menos %{length} caracteres
+      passwords:
+        title: Esqueceu sua senha?!
+        submit: Enviar email com instruções
+      registrations:
+        submit: Cadastrar!
+        title: Nova conta
+      sessions:
+        submit: Entrar
+        title: Entrar
+
