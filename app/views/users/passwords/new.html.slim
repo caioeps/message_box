@@ -1,10 +1,19 @@
-h2= t('users.authentication.passwords.title')
+h2.center= t('users.authentication.passwords.title')
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit t('users.authentication.passwords.submit')
-= render "users/shared/links"
+  .row
+    .input-field.col.s12.m8.l6.offset-m2.offset-l3
+      = devise_error_messages!
+  .row
+    .input-field.col.s12.m8.l6.offset-m2.offset-l3
+      = f.label :email
+      = f.email_field :email, \
+                      class: 'validate', \
+                      autofocus: true, \
+                      required: true, \
+                      pattern: '.+@.+\..+'
+  .row
+    .input-field.col.s12.m8.l6.offset-m2.offset-l3.center
+      = f.submit t('users.authentication.passwords.submit'), class: 'red btn'
+  .row
+    .input-field.col.s12.m8.l6.offset-m2.offset-l3.center
+      = render "users/shared/links"
