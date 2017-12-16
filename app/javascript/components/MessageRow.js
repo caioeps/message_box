@@ -1,15 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Time from 'react-time'
 
 export const MessageRow = props => {
   const { message } = props;
 
   return (
     <tr>
-      <td>{message.sender}</td>
+      <td>{message.senderId}</td>
       <td>{message.subject}</td>
-      <td>{message.body}</td>
-      <td>{message.createdAt}</td>
+      <td><Time value={message.createdAt} format="DD/MM/YYY"/></td>
     </tr>
   );
 }

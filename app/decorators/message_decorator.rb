@@ -10,7 +10,6 @@ class MessageDecorator < Draper::Decorator
       [
         Message.human_attribute_name(:sender),
         Message.human_attribute_name(:subject),
-        Message.human_attribute_name(:body),
         Message.human_attribute_name(:created_at),
       ]
     end

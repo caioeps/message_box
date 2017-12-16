@@ -8,28 +8,32 @@ export const MessageTable = props => {
   const { headings, messages } = props;
 
   return (
-    <table className="stripped highlight">
-      <thead>
-        {
-          headings.map(header => {
-            return (
-              <th>
-                <td>{header}</td>
-              </th>
-            );
-          })
-        }
-      </thead>
-      <tbody>
-        {
-          messages.map(message => {
-            return (
-              <MessageRow message={message} key={Uuid.generate()} />
-            );
-          })
-        }
-      </tbody>
-    </table>
+    <div className="row">
+      <div className="col s12">
+        <table className="highlight">
+          <thead>
+            <tr>
+              {
+                headings.map(header => {
+                  return (
+                    <th key={header}>{header}</th>
+                  );
+                })
+              }
+            </tr>
+          </thead>
+          <tbody>
+            {
+              messages.map(message => {
+                return (
+                  <MessageRow message={message} key={Uuid.generate()} />
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 
