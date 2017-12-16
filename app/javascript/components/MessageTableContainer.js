@@ -10,7 +10,14 @@ export default class MessageTableContainer extends React.Component {
   }
 
   render () {
+    const { headings } = this.props;
     const { messages } = this.state;
-    return <MessageTable messages={messages} />
+
+    return (
+      <MessageTable
+        messages={messages}
+        headings={headings}
+      />
+    );
   }
 }

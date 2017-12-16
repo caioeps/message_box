@@ -1,4 +1,4 @@
 .row
   .col.s12.m8.offset-m2
     = react_component 'MessageTableContainer', \
-      { messages: @messages }
+      { messages: @messages, headings: MessageDecorator.inbox_table_headings }

@@ -6,8 +6,10 @@ export const MessageRow = props => {
 
   return (
     <tr>
+      <td>{message.sender}</td>
       <td>{message.subject}</td>
       <td>{message.body}</td>
+      <td>{message.createdAt}</td>
     </tr>
   );
 }
