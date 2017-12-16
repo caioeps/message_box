@@ -26,7 +26,7 @@ export const MessageTable = props => {
             {
               messages.map(message => {
                 return (
-                  <MessageRow message={message} key={Uuid.generate()} />
+                  <MessageRow message={message} key={message.id} />
                 );
               })
             }

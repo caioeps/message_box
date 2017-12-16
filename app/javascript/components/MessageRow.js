@@ -7,9 +7,18 @@ export const MessageRow = props => {
 
   return (
     <tr>
-      <td>{message.senderId}</td>
+      <td>{message.sender.email}</td>
       <td>{message.subject}</td>
       <td><Time value={message.createdAt} format="DD/MM/YYY"/></td>
+      <td>
+        <a
+          href={`/messages/${message.id}/archive`}
+          className="red-text text-lighten-1 tooltipped"
+          data-method="patch"
+          data-tooltip="Arquivar">
+          <i className="material-icons">archive</i>
+        </a>
+      </td>
     </tr>
   );
 }
