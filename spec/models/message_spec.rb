@@ -32,9 +32,53 @@ RSpec.describe Message, type: :model do
     end
   end
 
-  pending '#archived?'
+  describe '#archived?' do
+    subject { message.archived? }
 
-  pending '#read!'
+    context 'when message is archived' do
+      let(:message) { build_stubbed(:message, :archived) }
 
-  pending '#read?'
+      it 'returns true' do
+        expect(subject).to eq(true)
+      end
+    end
+
+    context 'when message is not archived' do
+      let(:message) { build_stubbed(:message) }
+
+      it 'returns false' do
+        expect(subject).to eq(false)
+      end
+    end
+  end
+
+  describe '#read!' do
+    let(:message) { create(:message) }
+
+    subject { message.read! }
+
+    it 'sets a timestamp to #archived_at' do
+      expect { subject }.to change(message, :read_at)
+    end
+  end
+
+  describe '#read?' do
+    subject { message.read? }
+
+    context 'when message is read' do
+      let(:message) { build_stubbed(:message, :read) }
+
+      it 'returns true' do
+        expect(subject).to eq(true)
+      end
+    end
+
+    context 'when message is not read' do
+      let(:message) { build_stubbed(:message) }
+
+      it 'returns false' do
+        expect(subject).to eq(false)
+      end
+    end
+  end
 end
