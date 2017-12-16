@@ -16,6 +16,34 @@ RSpec.describe Messages::IndexSerializer, type: :serializer do
     end
   end
 
+  context 'assiciations' do
+    describe '#sender' do
+      subject { serialization[:sender] }
+
+      it 'serializes the sender' do
+        expect(subject).to be
+      end
+
+      it 'uses the UserSerializer' do
+        expect(UserSerializer).to receive(:new).twice
+        subject
+      end
+    end
+
+    describe '#receiver' do
+      subject { serialization[:receiver] }
+
+      it 'serializes the receiver' do
+        expect(subject).to be
+      end
+
+      it 'uses the UserSerializer' do
+        expect(UserSerializer).to receive(:new).twice
+        subject
+      end
+    end
+  end
+
   describe '#body' do
     subject { serialization[:body] }
 

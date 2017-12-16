@@ -1,6 +1,9 @@
 class Messages::IndexSerializer < ActiveModel::Serializer
   attributes :id, :subject, :body, :created_at
 
+  belongs_to :sender
+  belongs_to :receiver
+
   def body
     decorated_message.truncated_body
   end
