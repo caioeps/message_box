@@ -52,6 +52,28 @@ RSpec.describe Message, type: :model do
     end
   end
 
+  describe '.archived' do
+    let!(:message) { create(:message) }
+    let!(:archived_message) { create(:message, :archived) }
+
+    subject { described_class.archived }
+
+    it 'contains only archived messages' do
+      expect(subject).to contain_exactly(archived_message)
+    end
+  end
+
+  describe '.read' do
+    let!(:message) { create(:message) }
+    let!(:read_message) { create(:message, :read) }
+
+    subject { described_class.read }
+
+    it 'contains only archived messages' do
+      expect(subject).to contain_exactly(read_message)
+    end
+  end
+
   describe '#read!' do
     let(:message) { create(:message) }
 
