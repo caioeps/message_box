@@ -7,6 +7,7 @@ end
 
 ruby '2.4.2'
 
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise', '~> 4.3'
 gem 'draper', '~> 3.0'
 gem 'font-awesome-rails', '~> 4.7.0'
