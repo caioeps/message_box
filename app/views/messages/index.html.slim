@@ -1,2 +1,3 @@
-h1 Messages#index
-p Find me in app/views/messages/index.html.slim
+.row
+  .col.s12.m8.l6.offset-m2.offset-l3
+    = react_component 'MessageList', { messages: @messages}
