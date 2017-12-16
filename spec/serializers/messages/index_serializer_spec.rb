@@ -9,14 +9,14 @@ RSpec.describe Messages::IndexSerializer, type: :serializer do
   end
 
   describe 'fields' do
-    %i(id subject body created_at).each do |field|
+    %i(id subject created_at).each do |field|
       it "contains ##{field}" do
         expect(serialization[field]).to be
       end
     end
   end
 
-  context 'assiciations' do
+  context 'associations' do
     describe '#sender' do
       subject { serialization[:sender] }
 
@@ -41,22 +41,6 @@ RSpec.describe Messages::IndexSerializer, type: :serializer do
         expect(UserSerializer).to receive(:new).twice
         subject
       end
-    end
-  end
-
-  describe '#body' do
-    subject { serialization[:body] }
-
-    it 'truncates de message body' do
-      expect(subject).to be < message.body
-    end
-
-    it 'uses MessageDecorator#truncated_body to truncate the message body' do
-      expect_any_instance_of(MessageDecorator)
-        .to receive(:truncated_body)
-        .and_return('truncated body')
-
-      expect(subject).to eq('truncated body')
     end
   end
 end
