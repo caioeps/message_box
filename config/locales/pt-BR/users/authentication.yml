@@ -3,3 +3,4 @@ pt-BR:
     sessions:
       title: Entrar
       login: Entrar
+      destroy: Sair

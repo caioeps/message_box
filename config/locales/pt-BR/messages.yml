@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      message:
+        one: Mensagem
+        other: Mensagens
+    attributes:
+      message:
+        subject: título
+        body: texto
+        read_at: lida em
+        archived_at: arquivada em
+  messages:
+    messages: Mensagens
+
