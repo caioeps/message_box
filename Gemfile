@@ -8,6 +8,7 @@ end
 ruby '2.4.2'
 
 gem 'devise', '~> 4.3'
+gem 'draper', '~> 3.0'
 gem 'font-awesome-rails', '~> 4.7.0'
 gem 'jbuilder', '~> 2.5'
 gem 'material_icons', '~> 2.2.1'
