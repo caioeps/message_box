@@ -9,7 +9,10 @@ html
   body
     p.notice= notice
     p.alert= alert
-    .container
-      = yield
+    header
+      = render 'layouts/shared/sidebar'
+    main
+      .container
+        = yield
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
