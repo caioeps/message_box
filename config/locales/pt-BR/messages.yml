@@ -6,10 +6,13 @@ pt-BR:
         other: Mensagens
     attributes:
       message:
-        subject: título
-        body: texto
-        read_at: lida em
         archived_at: arquivada em
+        body: corpo
+        created_at: enviada em
+        read_at: lida em
+        receiver: destinatário
+        sender: remetente
+        subject: título
   messages:
     messages: Mensagens
 
