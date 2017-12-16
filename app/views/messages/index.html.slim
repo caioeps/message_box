@@ -1,3 +1,4 @@
 .row
-  .col.s12.m8.l6.offset-m2.offset-l3
-    = react_component 'MessageList', { messages: @messages}
+  .col.s12.m8.offset-m2
+    = react_component 'MessageTableContainer', \
+      { messages: @messages }
