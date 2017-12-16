@@ -1,1 +1,6 @@
-@import "materialize-css/dist/css/materialize";
+@import "variables";
+@import "materialize";
+@import "material_icons";
+
+@import "materialize/extend";
+@import "sidebar";
