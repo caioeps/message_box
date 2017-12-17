@@ -8,11 +8,16 @@ export class MessageRow extends React.Component {
     archiveMessage(message);
   }
 
+  _showMessageModal() {
+    const { showMessageModal, message } = this.props;
+    showMessageModal(message);
+  }
+
   render(){
     const { message } = this.props;
 
     return (
-      <tr>
+      <tr onClick={this._showMessageModal.bind(this)}>
         <td>{message.sender.email}</td>
         <td>{message.subject}</td>
         <td><Time value={message.createdAt} format="DD/MM/YYY"/></td>

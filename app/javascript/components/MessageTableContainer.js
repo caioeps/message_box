@@ -2,11 +2,15 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import { MessageTable } from './MessageTable';
+import { MessageShowModal } from './MessageShowModal';
 
 export default class MessageTableContainer extends React.Component {
   constructor(props) {
     super();
-    this.state = { messages: props.messages }
+    this.state = {
+      messages: props.messages,
+      currentMessage: null,
+    }
   }
 
   archiveMessage(message) {
@@ -33,16 +37,40 @@ export default class MessageTableContainer extends React.Component {
     });
   }
 
+  showMessageModal(message) {
+    const messageUrl = `/messages/${message.id}.json`;
+
+    $.ajax({
+      method: 'GET',
+      url: messageUrl,
+      success: response => {
+        const { message } = response;
+        this.setState({ currentMessage: message });
+      }
+    });
+  }
+
+  dismissMessageModal() {
+    this.setState({ currentMessage: null });
+  }
+
   render () {
     const { headings } = this.props;
-    const { messages } = this.state;
+    const { currentMessage, messages } = this.state;
 
     return (
-      <MessageTable
-        archiveMessage={this.archiveMessage.bind(this)}
-        messages={messages}
-        headings={headings}
-      />
+      <div>
+        <MessageTable
+          archiveMessage={this.archiveMessage.bind(this)}
+          messages={messages}
+          headings={headings}
+          showMessageModal={this.showMessageModal.bind(this)}
+        />
+        <MessageShowModal
+          dismissMessageModal={this.dismissMessageModal.bind(this)}
+          message={currentMessage}
+        />
+      </div>
     );
   }
 }

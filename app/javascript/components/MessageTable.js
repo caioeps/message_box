@@ -5,7 +5,7 @@ import { MessageRow } from "./MessageRow";
 import { Uuid } from "../helpers/Uuid";
 
 export const MessageTable = props => {
-  const { archiveMessage, headings, messages } = props;
+  const { archiveMessage, headings, messages, showMessageModal } = props;
 
   return (
     <div className="row">
@@ -30,6 +30,7 @@ export const MessageTable = props => {
                     archiveMessage={archiveMessage}
                     key={message.id}
                     message={message}
+                    showMessageModal={showMessageModal}
                   />
                 );
               })
