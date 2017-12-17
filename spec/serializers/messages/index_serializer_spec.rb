@@ -9,9 +9,9 @@ RSpec.describe Messages::IndexSerializer, type: :serializer do
   end
 
   describe 'fields' do
-    %i(id subject created_at).each do |field|
+    %i(id subject created_at read).each do |field|
       it "contains ##{field}" do
-        expect(serialization[field]).to be
+        expect(serialization[field]).not_to be_nil
       end
     end
   end
