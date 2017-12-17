@@ -13,7 +13,7 @@ end
 30.times do |i|
   Message.create do |message|
     message.subject = "Subject #{i}"
-    message.body = "body" * rand(10) * i
+    message.body = "body " * rand(10) * i
     message.sender = user_1
     message.receiver = user_2
   end
@@ -22,7 +22,7 @@ end
 20.times do |i|
   Message.create do |message|
     message.subject = "Subject #{i}"
-    message.body = "body" * rand(10) * i
+    message.body = "body " * rand(10) * i
     message.sender = user_2
     message.receiver = user_1
   end
