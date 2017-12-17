@@ -20,9 +20,12 @@ gem 'slim-rails', '~> 3.1.3'
 gem 'rails', '~> 5.1.4'
 gem 'react-rails', '~> 2.4.3'
 gem 'redis', '~> 3.0'
+gem 'reform', '~> 2.2.0'
+gem 'reform-rails'
 gem 'sass-rails', '~> 5.0.0'
 gem 'uglifier'
 gem 'webpacker'
+gem 'wysiwyg-rails', '~> 2.7.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
