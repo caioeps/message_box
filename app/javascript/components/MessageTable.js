@@ -10,7 +10,7 @@ export const MessageTable = props => {
   return (
     <div className="row">
       <div className="col s12">
-        <table className="highlight">
+        <table className="highlight messages-table">
           <thead>
             <tr>
               {

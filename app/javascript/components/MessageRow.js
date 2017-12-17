@@ -17,7 +17,10 @@ export class MessageRow extends React.Component {
     const { message } = this.props;
 
     return (
-      <tr onClick={this._showMessageModal.bind(this)}>
+      <tr
+        onClick={this._showMessageModal.bind(this)}
+        data-read={message.read}
+      >
         <td>{message.sender.email}</td>
         <td>{message.subject}</td>
         <td><Time value={message.createdAt} format="DD/MM/YYY"/></td>

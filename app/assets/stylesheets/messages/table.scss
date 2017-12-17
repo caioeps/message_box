@@ -1,0 +1,5 @@
+table.messages-table {
+  tr[data-read="false"] {
+    font-weight: bold;
+  }
+}
