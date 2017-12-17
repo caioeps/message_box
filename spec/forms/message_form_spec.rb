@@ -4,6 +4,7 @@ RSpec.describe MessageForm, type: :form do
   let(:message) { Message.new }
   let(:form) { described_class.new(message) }
   let(:receiver_email) { 'email@email.com' }
+  let!(:sender) { create(:user) }
 
   describe 'valitations' do
     subject { form.validate(params) }
@@ -12,6 +13,7 @@ RSpec.describe MessageForm, type: :form do
       {
         subject: 'Meeting up @ 5PM',
         receiver_email: receiver_email,
+        sender_id: sender&.id,
         body: "Meet me at Moe's by 5PM or you're gonna get fired."
       }
     end
@@ -38,6 +40,7 @@ RSpec.describe MessageForm, type: :form do
       let(:params) do
         {
           receiver_email: receiver_email,
+          sender_id: sender&.id,
           body: "Meet me at Moe's by 5PM or you're gonna get fired."
         }
       end
@@ -51,6 +54,7 @@ RSpec.describe MessageForm, type: :form do
       let(:params) do
         {
           subject: 'Meeting up @ 5PM',
+          sender_id: sender&.id,
           body: "Meet me at Moe's by 5PM or you're gonna get fired."
         }
       end
@@ -64,6 +68,7 @@ RSpec.describe MessageForm, type: :form do
       let(:params) do
         {
           subject: 'Meeting up @ 5PM',
+          sender_id: sender&.id,
           receiver_email: receiver_email,
         }
       end
