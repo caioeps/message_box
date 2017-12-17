@@ -27,6 +27,8 @@ export default class MessageTableContainer extends React.Component {
             messages: messages
           };
         });
+
+        Materialize.toast('Mensagem arquivada!', 3000);
       }
     });
   }
