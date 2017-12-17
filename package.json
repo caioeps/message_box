@@ -1,5 +1,9 @@
 {
   "name": "message_box",
+  "version": "1.0.0",
+  "engines": {
+    "node": "6.12.0"
+  },
   "private": true,
   "scripts": {
     "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
