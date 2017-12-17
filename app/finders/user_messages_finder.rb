@@ -2,7 +2,7 @@ class UserMessagesFinder
   attr_reader :messages
 
   def initialize(messages: Message.all, user:)
-    @messages = messages
+    @messages = messages.order(created_at: :desc).includes(:receiver, :sender)
     @user = user
   end
 
