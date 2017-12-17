@@ -15,7 +15,7 @@ RSpec.describe MessageDecorator do
   end
 
   describe '.inbox_table_headings' do
-    let(:expected_array) { ['remetente', 'título', 'corpo', 'enviada em'] }
+    let(:expected_array) { ['remetente', 'título', 'enviada em'] }
 
     subject { described_class.inbox_table_headings }
 
