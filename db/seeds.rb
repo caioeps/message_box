@@ -24,6 +24,6 @@ end
     message.subject = "Subject #{i}"
     message.body = "body" * rand(10) * i
     message.sender = user_2
-    message.receiver = user_2
+    message.receiver = user_1
   end
 end
