@@ -1,8 +1,9 @@
 @import "variables";
 @import "materialize";
 @import "material_icons";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 @import "materialize/extend";
 @import "sidebar";
-@import "messages/table";
-@import "messages/show_modal";
+@import "messages/*";

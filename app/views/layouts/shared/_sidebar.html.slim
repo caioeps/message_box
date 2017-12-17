@@ -11,6 +11,10 @@ ul.side-nav.fixed
   li
     .divider
   li
+    = link_to new_message_path do
+      i.material-icons present_to_all
+      = t('messages.new_message')
+  li
     = link_to messages_path do
       i.material-icons message
       = t('messages.messages')
@@ -18,6 +22,7 @@ ul.side-nav.fixed
     = link_to messages_archives_path do
       i.material-icons archive
       = t('messages.archived_messages')
+  .divider
   li
     = link_to destroy_user_session_path, method: :delete
       i.material-icons> exit_to_app
