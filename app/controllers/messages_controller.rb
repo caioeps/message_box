@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @message.read!
 
     render json: @message, status: :ok
   end

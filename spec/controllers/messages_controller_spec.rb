@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe MessagesController, type: :controller do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
 
   describe "GET #index" do
     subject { get :index }
@@ -12,18 +17,17 @@ RSpec.describe MessagesController, type: :controller do
   end
 
   describe 'GET #show' do
-    let(:user) { create(:user) }
     let!(:message) { create(:message, receiver: user) }
 
     subject { get :show, params: { id: message.id } }
 
-    before do
-      sign_in user
-    end
-
     it "returns http success" do
       subject
       expect(response).to have_http_status(:success)
+    end
+
+    it 'the message is marked as read' do
+      expect { subject }.to change { message.reload.read? }.from(false).to(true)
     end
 
     context 'when there is no offer matching the id' do
@@ -52,5 +56,4 @@ RSpec.describe MessagesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-
 end

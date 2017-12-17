@@ -39,12 +39,24 @@ export default class MessageTableContainer extends React.Component {
 
   showMessageModal(message) {
     const messageUrl = `/messages/${message.id}`;
+    const { messages } = this.state;
 
     $.ajax({
       method: 'GET',
       url: messageUrl,
       success: message => {
-        this.setState({ currentMessage: message });
+        this.setState((prevState, props) => {
+          return {
+            messages: messages.map(msg => {
+              if(msg.id === message.id) {
+                return { ...msg, read: true};
+              } else {
+                return msg;
+              }
+            }),
+            currentMessage: message,
+          };
+        });
       }
     });
   }

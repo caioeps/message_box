@@ -11,12 +11,7 @@ export const MessageShowModal = props => {
       <ReactModal
         ariaHideApp={false}
         contentLabel={message && message.subject}
-        isOpen={!!message}
-        style={{
-          overlay: {
-            'margin-left': '300px'
-          }
-        }}>
+        isOpen={!!message}>
         <div className="container-fluid">
           <div className="row">
             <div className="col s12">
