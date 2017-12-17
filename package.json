@@ -1,6 +1,10 @@
 {
   "name": "message_box",
   "private": true,
+  "scripts": {
+    "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
+    "heroku-postbuild": "npm run webpack:deploy"
+  },
   "dependencies": {
     "@rails/webpacker": "^3.1.1",
     "babel-preset-react": "^6.24.1",
