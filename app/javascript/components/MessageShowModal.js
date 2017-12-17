@@ -16,15 +16,34 @@ export const MessageShowModal = props => {
           overlay: {
             'margin-left': '300px'
           }
-        }}
-      >
-        <h2>{message.subject}</h2>
-        <p>{message.body}</p>
-        <button
-          className="btn red"
-          onClick={dismissMessageModal}>
-          Fechar
-        </button>
+        }}>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col s12">
+              <button
+                className="btn red right"
+                onClick={dismissMessageModal}>
+                Fechar
+              </button>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s12">
+              <h2>{message.subject}</h2>
+              <div className="divider" />
+              <p>{message.body}</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s12 center">
+              <button
+                className="btn red"
+                onClick={dismissMessageModal}>
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
       </ReactModal>
     );
   } else {

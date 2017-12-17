@@ -38,13 +38,12 @@ export default class MessageTableContainer extends React.Component {
   }
 
   showMessageModal(message) {
-    const messageUrl = `/messages/${message.id}.json`;
+    const messageUrl = `/messages/${message.id}`;
 
     $.ajax({
       method: 'GET',
       url: messageUrl,
-      success: response => {
-        const { message } = response;
+      success: message => {
         this.setState({ currentMessage: message });
       }
     });
