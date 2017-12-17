@@ -21,6 +21,7 @@ gem 'rails', '~> 5.1.4'
 gem 'react-rails', '~> 2.4.3'
 gem 'redis', '~> 3.0'
 gem 'sass-rails', '~> 5.0.0'
+gem 'uglifier'
 gem 'webpacker'
 
 group :development, :test do
