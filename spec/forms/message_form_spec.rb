@@ -22,6 +22,10 @@ RSpec.describe MessageForm, type: :form do
       it 'returns no errors' do
         expect(subject).to eq(true)
       end
+
+      it 'assigns receiver_id' do
+        expect { subject }.to change(form, :receiver_id).from(nil).to(user.id)
+      end
     end
 
     context 'when user does not exist' do

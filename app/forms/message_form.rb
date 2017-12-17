@@ -1,6 +1,7 @@
 class MessageForm < Reform::Form
   property :subject
   property :receiver_email, virtual: true
+  property :receiver_id, readable: false
   property :body
 
   validates :subject,        presence: true
@@ -9,10 +10,16 @@ class MessageForm < Reform::Form
 
   validate :receiver_email_must_exist
 
+  def validate(params)
+    @user = User.find_by(email: params[:receiver_email])
+    self.receiver_id = @user&.id
+    super
+  end
+
   private
 
   def receiver_email_must_exist
-    unless User.exists?(email: receiver_email)
+    if @user.nil?
       errors.add(:receiver_email, 'Email não encontrado!')
     end
   end
