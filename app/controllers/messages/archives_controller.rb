@@ -1,10 +1,10 @@
-class MessagesController < ApplicationController
+class Messages::ArchivesController < ApplicationController
   layout 'mailbox'
 
   before_action :authenticate_user!
 
   def index
-    @messages = serialized_user_messages
+    @messages = serialized_user_archived_messages
 
     respond_to do |format|
       format.html
@@ -13,16 +13,15 @@ class MessagesController < ApplicationController
   end
 
   def create
-  end
-
-  def new
-    @message = Message.new
+    @message = Message.find(params[:id])
+    @message.archive!
+    head :ok
   end
 
   private
 
-  def serialized_user_messages
-    current_user.received_messages.includes(:sender, :receiver).order(created_at: :desc).map do |message|
+  def serialized_user_archived_messages
+    current_user.received_messages.archived.includes(:sender, :receiver).order(created_at: :desc).map do |message|
       serializer = Messages::IndexSerializer.new(message)
       ActiveModelSerializers::Adapter.create(serializer).as_json
     end

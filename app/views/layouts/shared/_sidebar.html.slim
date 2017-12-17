@@ -15,6 +15,10 @@ ul.side-nav.fixed
       i.material-icons message
       = t('messages.messages')
   li
+    = link_to messages_archives_path do
+      i.material-icons archive
+      = t('messages.archived_messages')
+  li
     = link_to destroy_user_session_path, method: :delete
       i.material-icons> exit_to_app
       = t('users.sessions.destroy')

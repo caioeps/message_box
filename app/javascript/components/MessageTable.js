@@ -5,7 +5,7 @@ import { MessageRow } from "./MessageRow";
 import { Uuid } from "../helpers/Uuid";
 
 export const MessageTable = props => {
-  const { headings, messages } = props;
+  const { archiveMessage, headings, messages } = props;
 
   return (
     <div className="row">
@@ -26,7 +26,11 @@ export const MessageTable = props => {
             {
               messages.map(message => {
                 return (
-                  <MessageRow message={message} key={message.id} />
+                  <MessageRow
+                    archiveMessage={archiveMessage}
+                    key={message.id}
+                    message={message}
+                  />
                 );
               })
             }

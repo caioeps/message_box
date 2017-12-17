@@ -14,5 +14,6 @@ pt-BR:
         sender: remetente
         subject: título
   messages:
+    archived_messages: Mensagens arquivadas
     messages: Mensagens
 

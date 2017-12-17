@@ -9,12 +9,35 @@ export default class MessageTableContainer extends React.Component {
     this.state = { messages: props.messages }
   }
 
+  archiveMessage(message) {
+    const archiveUrl = '/messages/archives';
+
+    $.ajax({
+      method: 'POST',
+      url: archiveUrl,
+      data: { id: message.id },
+      success: response => {
+        this.setState((prevState, props) => {
+          const { messages } = this.state;
+          const messageIndex = messages.indexOf(message);
+
+          messages.splice(messageIndex, 1);
+
+          return {
+            messages: messages
+          };
+        });
+      }
+    });
+  }
+
   render () {
     const { headings } = this.props;
     const { messages } = this.state;
 
     return (
       <MessageTable
+        archiveMessage={this.archiveMessage.bind(this)}
         messages={messages}
         headings={headings}
       />

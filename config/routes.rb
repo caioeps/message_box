@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     }
 
   resources :messages, only: %i[index create new]
+
+  namespace :messages do
+    resources :archives, only: %i[index create]
+  end
 end
