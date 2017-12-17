@@ -40,11 +40,48 @@ RSpec.describe MessagesController, type: :controller do
   end
 
   describe "post #create" do
-    subject { post :create, params: {} }
+    let(:receiver_email) { 'email@email.com' }
+    let!(:receiver) { create(:user, email: receiver_email) }
+
+    let(:message_params) do
+      {
+        subject: 'Metting',
+        receiver_email: receiver_email,
+        body: 'Hello, there!'
+      }
+    end
+
+    subject do
+      post :create, params: {
+        message: message_params
+      }
+    end
 
     it "returns http success" do
       subject
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
+    end
+
+    it 'creates a new message' do
+      expect { subject }.to change(Message, :count).by(1)
+    end
+
+    it 'redirects to MessagesController#index' do
+      subject
+      expect(response).to redirect_to(messages_path)
+    end
+
+    context 'with invalid params' do
+      let(:message_params) do
+        {
+          subject: 'Metting',
+          receiver_email: receiver_email,
+        }
+      end
+
+      it 'does not create any message' do
+        expect { subject }.not_to change(Message, :count)
+      end
     end
   end
 
