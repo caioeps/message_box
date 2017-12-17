@@ -6,7 +6,6 @@
   },
   "private": true,
   "scripts": {
-    "postinstall": "rake webpack:compile"
   },
   "dependencies": {
     "@rails/webpacker": "^3.1.1",
