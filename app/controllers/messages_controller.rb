@@ -12,6 +12,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+    @message = Message.find(params[:id])
+
+    render json: @message, status: :ok
+  end
+
   def create
   end
 
@@ -22,7 +28,7 @@ class MessagesController < ApplicationController
   private
 
   def serialized_user_messages
-    current_user.received_messages.includes(:sender, :receiver).order(created_at: :desc).map do |message|
+    UserMessagesFinder.new(user: current_user).inbox.messages.map do |message|
       serializer = Messages::IndexSerializer.new(message)
       ActiveModelSerializers::Adapter.create(serializer).as_json
     end

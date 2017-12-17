@@ -21,7 +21,7 @@ class Messages::ArchivesController < ApplicationController
   private
 
   def serialized_user_archived_messages
-    current_user.received_messages.archived.includes(:sender, :receiver).order(created_at: :desc).map do |message|
+    UserMessagesFinder.new(user: current_user).archived.messages.map do |message|
       serializer = Messages::IndexSerializer.new(message)
       ActiveModelSerializers::Adapter.create(serializer).as_json
     end
