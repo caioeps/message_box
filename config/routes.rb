@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       registrations: "users/registrations"
     }
 
-  resources :messages, only: %i[index create new]
+  resources :messages, only: %i[index create new show]
 
   namespace :messages do
     resources :archives, only: %i[index create]
