@@ -3,13 +3,15 @@ import PropTypes from "prop-types"
 import Time from 'react-time'
 
 export class MessageRow extends React.Component {
-  _archiveMessage() {
+  _archiveMessage(event) {
     const { archiveMessage, message } = this.props;
+    event.stopPropagation();
     archiveMessage(message);
   }
 
-  _showMessageModal() {
+  _showMessageModal(event) {
     const { showMessageModal, message } = this.props;
+    event.stopPropagation();
     showMessageModal(message);
   }
 

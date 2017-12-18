@@ -13,13 +13,10 @@ export const MessageTable = props => {
         <table className="highlight messages-table">
           <thead>
             <tr>
-              {
-                headings.map(header => {
-                  return (
-                    <th key={header}>{header}</th>
-                  );
-                })
-              }
+              <th>Remetente</th>
+              <th>Assunto</th>
+              <th>Enviada em</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>

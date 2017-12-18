@@ -44,12 +44,12 @@ export default class MessageTableContainer extends React.Component {
     $.ajax({
       method: 'GET',
       url: messageUrl,
-      success: message => {
+      success: messageFromServer => {
         this.setState((prevState, props) => {
           return {
             messages: messages.map(msg => {
-              if(msg.id === message.id) {
-                return { ...msg, read: true};
+              if(msg.id === messageFromServer.id) {
+                return messageFromServer;
               } else {
                 return msg;
               }
