@@ -41,10 +41,17 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
+      # Test coverage
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
+      - run: ./cc-test-reporter before-build
+
       # run tests!
-      - run:
-          name: run tests
-          command: bundle exec rspec
+      - run: bundle exec rspec
+
+      # Upload test coverage
+      - run: ./cc-test-reporter after-build --id 77bf422846ed947dd59cb53b2a3680cb97ce2e991ad52a5b608a582022c79724
+
       # collect reports
       - store_test_results:
           path: /tmp/test-results
