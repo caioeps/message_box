@@ -6,10 +6,6 @@ class Message < ApplicationRecord
   scope :not_archived, -> { where(archived_at: nil) }
   scope :read, -> { where.not(read_at: nil) }
 
-  def archive!
-    update_attribute(:archived_at, Time.zone.now)
-  end
-
   def archived?
     !!archived_at
   end
@@ -20,5 +16,9 @@ class Message < ApplicationRecord
 
   def read?
     !!read_at
+  end
+
+  def toggle_archive!
+    update_attribute(:archived_at, archived? ? nil : Time.zone.now)
   end
 end

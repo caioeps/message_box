@@ -22,16 +22,6 @@ RSpec.describe Message, type: :model do
   it { is_expected.to belong_to(:sender).class_name('User') }
   it { is_expected.to belong_to(:receiver).class_name('User') }
 
-  describe '#archive!' do
-    let(:message) { create(:message) }
-
-    subject { message.archive! }
-
-    it 'sets a timestamp to #archived_at' do
-      expect { subject }.to change(message, :archived_at)
-    end
-  end
-
   describe '#archived?' do
     subject { message.archived? }
 
@@ -111,6 +101,26 @@ RSpec.describe Message, type: :model do
 
       it 'returns false' do
         expect(subject).to eq(false)
+      end
+    end
+  end
+
+  describe '#toggle_archive!' do
+    subject { message.toggle_archive! }
+
+    context 'when message is not archived' do
+      let(:message) { create(:message) }
+
+      it 'sets a timestamp to #archived_at' do
+        expect { subject }.to change { message.reload.archived_at }
+      end
+    end
+
+    context 'when message is archived' do
+      let(:message) { create(:message, :archived) }
+
+      it 'sets #archived_at to nil' do
+        expect { subject }.to change { message.reload.archived_at }.to(nil)
       end
     end
   end
