@@ -15,6 +15,6 @@ pt-BR:
         subject: título
   messages:
     archived_messages: Mensagens arquivadas
-    messages: Mensagens
+    messages: Caixa de entrada
     new_message: Nova mensagem
 

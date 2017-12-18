@@ -5,7 +5,19 @@ import { MessageRow } from "./MessageRow";
 import { Uuid } from "../helpers/Uuid";
 
 export const MessageTable = props => {
-  const { archiveMessage, headings, messages, showMessageModal } = props;
+  const { toggleArchiveMessage, headings, messages, showMessageModal } = props;
+
+  if(messages.length < 1) {
+    return (
+      <div className="row">
+        <div className="col s12">
+          <h3 className="center">
+            Ops! Parece que não há nada por aqui! :(
+          </h3>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="row">
@@ -24,7 +36,7 @@ export const MessageTable = props => {
               messages.map(message => {
                 return (
                   <MessageRow
-                    archiveMessage={archiveMessage}
+                    toggleArchiveMessage={toggleArchiveMessage}
                     key={message.id}
                     message={message}
                     showMessageModal={showMessageModal}

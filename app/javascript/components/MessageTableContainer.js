@@ -13,14 +13,14 @@ export default class MessageTableContainer extends React.Component {
     }
   }
 
-  archiveMessage(message) {
-    const archiveUrl = '/messages/archives';
+  toggleArchiveMessage(message) {
+    const toggleArchiveUrl = `/messages/archives/toggle/${message.id}`;
 
     $.ajax({
-      method: 'POST',
-      url: archiveUrl,
+      method: 'PATCH',
+      url: toggleArchiveUrl,
       data: { id: message.id },
-      success: response => {
+      success: messageFromServer => {
         this.setState((prevState, props) => {
           const { messages } = this.state;
           const messageIndex = messages.indexOf(message);
@@ -32,9 +32,17 @@ export default class MessageTableContainer extends React.Component {
           };
         });
 
-        Materialize.toast('Mensagem arquivada!', 3000);
+        Materialize
+          .toast(
+            this.toggleArchiveMessageToastMessage(messageFromServer),
+            3000);
       }
     });
+  }
+
+  toggleArchiveMessageToastMessage(message) {
+    return message.archived ?
+      'Mensagem arquivada' : 'Mensagem enviada para caixa de entrada';
   }
 
   showMessageModal(message) {
@@ -49,12 +57,12 @@ export default class MessageTableContainer extends React.Component {
           return {
             messages: messages.map(msg => {
               if(msg.id === messageFromServer.id) {
-                return messageFromServer;
+                return { ...msg, read: messageFromServer.read };
               } else {
                 return msg;
               }
             }),
-            currentMessage: message,
+            currentMessage: messageFromServer,
           };
         });
       }
@@ -72,7 +80,7 @@ export default class MessageTableContainer extends React.Component {
     return (
       <div>
         <MessageTable
-          archiveMessage={this.archiveMessage.bind(this)}
+          toggleArchiveMessage={this.toggleArchiveMessage.bind(this)}
           messages={messages}
           headings={headings}
           showMessageModal={this.showMessageModal.bind(this)}
