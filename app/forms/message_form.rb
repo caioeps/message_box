@@ -23,7 +23,7 @@ class MessageForm < Reform::Form
 
   def receiver_email_must_exist
     if @receiver.nil?
-      errors.add(:receiver_email, 'Email não encontrado!')
+      errors.add(:receiver_email, 'não encontrado!')
     end
   end
 end

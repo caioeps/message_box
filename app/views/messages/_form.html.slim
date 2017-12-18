@@ -1,5 +1,11 @@
 = form_for @message_form, html: { class: 'message-form' } do |f|
   .row
+    .col.s12
+      ul.collection
+        - if @message_form.errors.any?
+          - @message_form.errors.full_messages.each do |error_msg|
+            li.collection-item= error_msg
+  .row
     .col.s12.input-field
       = f.label :subject
       = f.text_field :subject
