@@ -24,6 +24,14 @@ RSpec.describe CreateMessage do
     it 'tells that the message was created' do
       expect(subject.created?).to eq(true)
     end
+
+    it 'returns the message created' do
+      expect(subject.message).to be_a(Message)
+    end
+
+    it 'returns the message form' do
+      expect(subject.message_form).to be_a(MessageForm)
+    end
   end
 
   context 'with invalid params' do
