@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    models:
+      message:
+        one: Mensagem
+        other: Mensagens
+    attributes:
+      message:
+        archived_at: arquivada em
+        body: corpo
+        created_at: enviada em
+        read_at: lida em
+        receiver: destinatário
+        sender: remetente
+        subject: título
+  messages:
+    archived_messages: Mensagens arquivadas
+    messages: Caixa de entrada
+    new_message: Nova mensagem
+

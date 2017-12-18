@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      message_form:
+        one: Mensagem
+        other: Mensagens
+    attributes:
+      message_form:
+        archived_at: arquivada em
+        body: Mensagem
+        created_at: enviada em
+        read_at: lida em
+        receiver_email: Email do destinatário
+        sender: remetente
+        subject: Assunto
+

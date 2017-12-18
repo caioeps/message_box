@@ -7,15 +7,25 @@ end
 
 ruby '2.4.2'
 
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise', '~> 4.3'
+gem 'draper', '~> 3.0'
+gem 'font-awesome-rails', '~> 4.7.0'
 gem 'jbuilder', '~> 2.5'
+gem 'material_icons', '~> 2.2.1'
+gem 'materialize-sass'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'slim-rails', '~> 3.1.3'
 gem 'rails', '~> 5.1.4'
+gem 'react-rails', '~> 2.4.3'
 gem 'redis', '~> 3.0'
+gem 'reform', '~> 2.2.0'
+gem 'reform-rails'
 gem 'sass-rails', '~> 5.0.0'
+gem 'uglifier'
 gem 'webpacker'
+gem 'wysiwyg-rails', '~> 2.7.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

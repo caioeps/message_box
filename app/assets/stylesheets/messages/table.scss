@@ -1,0 +1,9 @@
+table.messages-table {
+  tr[data-read="false"] {
+    font-weight: bold;
+  }
+
+  .message-row {
+    cursor: pointer;
+  }
+}

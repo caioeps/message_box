@@ -1,0 +1,7 @@
+.side-nav {
+  @extend .red, .lighten-1;
+
+  a, i {
+    @extend .white-text;
+  }
+}

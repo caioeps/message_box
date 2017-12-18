@@ -1,0 +1,30 @@
+ul.side-nav.fixed
+  li
+    .user-view.center
+      .background
+      = link_to root_path, class: 'center' do
+        i.material-icons.md-48 contact_mail
+      a href="#!name"
+        span.name= current_user.email
+      a href="#!email"
+        span.email= current_user.email
+  li
+    .divider
+  li
+    = link_to new_message_path do
+      i.material-icons present_to_all
+      = t('messages.new_message')
+  li
+    = link_to messages_path do
+      i.material-icons message
+      = t('messages.messages')
+  li
+    = link_to messages_archives_path do
+      i.material-icons archive
+      = t('messages.archived_messages')
+  .divider
+  li
+    = link_to destroy_user_session_path, method: :delete
+      i.material-icons> exit_to_app
+      = t('users.sessions.destroy')
+
