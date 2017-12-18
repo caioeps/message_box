@@ -40,7 +40,7 @@ export class MessageRow extends React.Component {
         <td className="actions">
           <i
             onClick={this._toggleArchiveMessage.bind(this)}
-            className="material-icons red-text text-lighten-1 tooltipped"
+            className="material-icons deep-purple-text text-lighten-2 tooltipped"
             data-tooltip={this.archiveOrUnarchiveTooltipMessage()}>
             {this.archiveOrUnarchiveIcon()}
           </i>
