@@ -1,24 +1,34 @@
+[![CircleCI](https://circleci.com/gh/caioeps/message_box.svg?style=svg)](https://circleci.com/gh/caioeps/message_box)
+
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a messaging app, similar to a mailbox.
+It uses Rails, Webpacker, React.js, and SASS.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+```
+bin/setup
+```
 
-* System dependencies
+Although you don't need to, you may run seed the project with `rake db:seed`.
 
-* Configuration
+## Server
+Since we are using Webpacker, in order to the project run the server properly
+we must also run webpack-dev-server alogside Puma. Foreman will allow us to run
+many processes as Heroku does, using Procfiles.
 
-* Database creation
+```
+foreman start -f Procfile.dev
+```
 
-* Database initialization
+## Testing
 
-* How to run the test suite
+This project uses RSpec as its testing suite.
 
-* Services (job queues, cache servers, search engines, etc.)
+To run all tests
 
-* Deployment instructions
+```
+rspec
+```
 
-* ...
