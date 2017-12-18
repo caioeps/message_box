@@ -21,9 +21,9 @@ export const MessageShowModal = props => {
             </div>
             <div className="col s12 m4">
               <button
-                className="btn red right"
+                className="waves-effect waves-teal btn-flat btn-flat right"
                 onClick={dismissMessageModal}>
-                <i className="material-icons">close</i>
+                <i className="material-icons text-lighten-2 deep-purple-text">close</i>
               </button>
             </div>
           </div>
@@ -39,7 +39,7 @@ export const MessageShowModal = props => {
           <div className="row">
             <div className="col s12 center">
               <button
-                className="btn red"
+                className="lighten-2 deep-purple btn"
                 onClick={dismissMessageModal}>
                 OK
               </button>
