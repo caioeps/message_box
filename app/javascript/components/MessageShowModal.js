@@ -14,19 +14,26 @@ export const MessageShowModal = props => {
         isOpen={!!message}>
         <div className="container-fluid">
           <div className="row">
-            <div className="col s12">
+            <div className="col s12 m8">
+              <h2>
+                {message.subject}
+              </h2>
+            </div>
+            <div className="col s12 m4">
               <button
                 className="btn red right"
                 onClick={dismissMessageModal}>
-                Fechar
+                <i className="material-icons">close</i>
               </button>
             </div>
           </div>
           <div className="row">
             <div className="col s12">
-              <h2>{message.subject}</h2>
+              <p className="small">
+                {message.sender.email}
+              </p>
               <div className="divider" />
-              <p>{message.body}</p>
+              <p dangerouslySetInnerHTML={{__html: message.body}} />
             </div>
           </div>
           <div className="row">
