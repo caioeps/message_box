@@ -1,29 +1,18 @@
-user_1 = User.create do |user|
-  user.email = 'email@email.com'
-  user.password = '123123'
-  user.password_confirmation = '123123'
-end
+DEFAULT_PASSWORD = '123123'
 
-user_2 = User.create do |user|
-  user.email = 'anotheremail@email.com'
-  user.password = '123123'
-  user.password_confirmation = '123123'
-end
-
-30.times do |i|
-  Message.create do |message|
-    message.subject = "Subject #{i}"
-    message.body = "body " * rand(10) * i
-    message.sender = user_1
-    message.receiver = user_2
+users = %W(caio renan rodrigo italo sara luis gustavo).map do |name|
+  User.create do |user|
+    user.email = "#{name}@email.com"
+    user.password = DEFAULT_PASSWORD
+    user.password_confirmation = DEFAULT_PASSWORD
   end
 end
 
-20.times do |i|
+50.times do |i|
   Message.create do |message|
-    message.subject = "Subject #{i}"
-    message.body = "body " * rand(10) * i
-    message.sender = user_2
-    message.receiver = user_1
+    message.subject  = FFaker::LoremFR.phrase.split('.').first
+    message.body     = FFaker::LoremFR.paragraph
+    message.sender   = users.sample
+    message.receiver = users.sample
   end
 end
