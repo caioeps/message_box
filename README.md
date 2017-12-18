@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/caioeps/message_box.svg?style=svg)](https://circleci.com/gh/caioeps/message_box)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bfd80fafbb69faa99db6/maintainability)](https://codeclimate.com/github/caioeps/message_box/maintainability)
 
 # README
 
