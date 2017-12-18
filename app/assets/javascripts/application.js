@@ -1,7 +1,7 @@
 //= require jquery/dist/jquery
 //= require rails-ujs
 //= require materialize
-//= require froala_editor.min
+//= require ckeditor/init
 //
 //= require sidebar
 //= require_tree ./messages

@@ -8,6 +8,7 @@ end
 ruby '2.4.3'
 
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'ckeditor', '~> 4.2.4'
 gem 'devise', '~> 4.3'
 gem 'draper', '~> 3.0'
 gem 'ffaker'
@@ -26,7 +27,6 @@ gem 'reform-rails'
 gem 'sass-rails', '~> 5.0.0'
 gem 'uglifier'
 gem 'webpacker'
-gem 'wysiwyg-rails', '~> 2.7.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
