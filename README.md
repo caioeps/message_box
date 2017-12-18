@@ -15,7 +15,7 @@ Although you don't need to, you may run seed the project with `rake db:seed`.
 
 ## Server
 Since we are using Webpacker, in order to the project run the server properly
-we must also run webpack-dev-server alogside Puma. Foreman will allow us to run
+we must also run webpack-dev-server alongside Puma. Foreman will allow us to run
 many processes as Heroku does, using Procfiles.
 
 ```
