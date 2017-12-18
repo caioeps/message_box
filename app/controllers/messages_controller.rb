@@ -13,10 +13,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = UserMessagesFinder.new(user: current_user)
-                                 .inbox
-                                 .messages
-                                 .find(params[:id])
+    @message = current_user.received_messages.find(params[:id])
     @message.read!
 
     render json: @message, status: :ok
