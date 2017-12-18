@@ -13,14 +13,4 @@ RSpec.describe MessageDecorator do
       expect(subject.size).to eq(80)
     end
   end
-
-  describe '.inbox_table_headings' do
-    let(:expected_array) { ['remetente', 'título', 'enviada em'] }
-
-    subject { described_class.inbox_table_headings }
-
-    it 'matches the expected_array' do
-      expect(subject).to eq(expected_array)
-    end
-  end
 end
