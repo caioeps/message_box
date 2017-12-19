@@ -5,7 +5,10 @@ class CreateMessage
   end
 
   def call
-    OpenStruct.new(created?: !!create_message, message_form: message_form)
+    OpenStruct.new(
+      created?: !!create_message,
+      message_form: message_form,
+      message: message_form.model)
   end
 
   private

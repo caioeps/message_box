@@ -7,16 +7,31 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    respond_to do |format|
+      format.html { super }
+      format.json do
+        self.resource = warden.authenticate!(auth_options)
+        sign_in(resource_name, resource)
+        respond_with_authentication_token(resource)
+      end
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
   #   super
   # end
 
-  # protected
+  protected
+
+  def respond_with_authentication_token(resource)
+    render json: {
+      success: true,
+      auth_token: resource.authentication_token,
+      email: resource.email
+    }
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
