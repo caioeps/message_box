@@ -5,7 +5,7 @@ users = %W(caio renan rodrigo italo sara luis gustavo).map do |name|
     user.email = "#{name}@email.com"
     user.password = DEFAULT_PASSWORD
     user.password_confirmation = DEFAULT_PASSWORD
-    user.authentication_token = 'token'
+    user.authentication_token = name
   end
 end
 
