@@ -4,7 +4,7 @@ module Messages
       before_action :authenticate_user!
 
       def update
-        @message = Message.find(params[:id])
+        @message = current_user.received_messages.find(params[:id])
 
         if @message.toggle_archive!
           head :ok
