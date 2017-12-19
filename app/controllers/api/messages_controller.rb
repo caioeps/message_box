@@ -3,7 +3,7 @@ module Api
     def index
       @messages = UserMessagesFinder.new(user: current_user).inbox.messages
 
-      render json: @messages, each_serializer: Messages::IndexSerializer
+      render json: @messages, each_serializer: ::Messages::IndexSerializer
     end
 
     def show
