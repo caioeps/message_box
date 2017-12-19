@@ -8,10 +8,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   body.teal.accent-4
     .container
-      .row
-        .col.s12.center
-          p.notice= notice
-          p.alert= alert
       = yield
+    = show_flash_messages
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
