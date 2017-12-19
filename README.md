@@ -33,3 +33,27 @@ To run all tests
 rspec
 ```
 
+## The API
+
+This app has the following endpoints:
+* `GET   /api/messages`
+* `POST  /api/messages`
+* `GET   /api/messages/archives`
+* `PATCH /api/messages/archives/toggle`
+
+This app has, at least, the following emails registered:
+
+* `renan@email.com` with password `123123`, and token `renan`
+* `rodrigo@email.com` with password `123123`, and token `rodrigo`
+
+The request url is going to have the following format
+
+`/path/to/resource?user_email=renan@email.com&user_token=renan`
+
+You may pass your authentication informations in the headers, as well, like so:
+
+```
+X-User-Email renan@email.com
+X-User-Token renan
+```
+
