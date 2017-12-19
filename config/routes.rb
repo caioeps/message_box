@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     }
 
   namespace :api do
-    resources :messages, only: %i[index create new show], defaults: { format: :json }
+    resources :messages, only: %i[index create  show], defaults: { format: :json }
 
     namespace :messages do
       resources :archives, only: %i[index]

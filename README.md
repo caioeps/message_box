@@ -35,11 +35,13 @@ rspec
 
 ## The API
 
-This app has the following endpoints:
+The following endpoints are available:
+
 * `GET   /api/messages`
+* `GET   /api/messages/:id`
 * `POST  /api/messages`
 * `GET   /api/messages/archives`
-* `PATCH /api/messages/archives/toggle`
+* `PATCH /api/messages/archives/toggle/:id`
 
 This app has, at least, the following emails registered:
 
