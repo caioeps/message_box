@@ -12,9 +12,7 @@ nav
           .background
           = link_to root_path, class: 'center' do
             i.material-icons.md-48 contact_mail
-          a href="#!name"
-            span.name= current_user.email
-          a href="#!email"
+          a href="#"
             span.email= current_user.email
       li
         .divider
@@ -38,12 +36,10 @@ nav
 
     ul.side-nav.fixed
       li
-        .user-view.center
+        .user-view
           .background
           = link_to root_path, class: 'center' do
             i.material-icons.md-48 contact_mail
-          a href="#!name"
-            span.name= current_user.email
           a href="#!email"
             span.email= current_user.email
       li
