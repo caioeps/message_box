@@ -1,2 +1,3 @@
-$(".button-collapse").sideNav({
+$(document).ready(() => {
+  $(".menu-collapse").sideNav();
 });

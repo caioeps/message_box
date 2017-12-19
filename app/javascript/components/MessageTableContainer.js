@@ -13,6 +13,14 @@ export default class MessageTableContainer extends React.Component {
     }
   }
 
+  componentDidMount() {
+    document.addEventListener('keydown', (event) => {
+      if(event.keyCode === 27 || event.keyCode === 13) {
+        this.dismissMessageModal();
+      }
+    });
+  }
+
   toggleArchiveMessage(message) {
     const toggleArchiveUrl = `/messages/archives/toggle/${message.id}`;
 

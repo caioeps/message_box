@@ -1,9 +1,9 @@
 header, main, footer {
-  padding-left: 300px;
+  padding-left: 0;
 }
 
-@media only screen and (max-width : 992px) {
+@media #{$large-and-up} {
   header, main, footer {
-    padding-left: 0;
+    padding-left: 300px;
   }
 }

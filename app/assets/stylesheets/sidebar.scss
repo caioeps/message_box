@@ -1,3 +1,13 @@
+nav {
+  @extend .lighten-2, .deep-purple;
+
+  .nav-wrapper {
+    @media #{large-and-up} {
+      display: none;
+    }
+  }
+}
+
 .side-nav {
   @extend .accent-4, .teal;
 
