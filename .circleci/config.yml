@@ -14,6 +14,8 @@ jobs:
           RAILS_ENV: test
       - image: circleci/postgres:10.2-alpine
         environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: circleci_test
 
     working_directory: ~/repo
 
