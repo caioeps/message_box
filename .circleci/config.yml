@@ -12,6 +12,8 @@ jobs:
           PGUSER: root
           PGPASSWORD: circleci_test
           RAILS_ENV: test
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: circleci_test
       - image: circleci/postgres:10.2-alpine
         environment:
           POSTGRES_USER: root
