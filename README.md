@@ -6,21 +6,39 @@
 This is a messaging app, similar to a mailbox.
 It uses Rails, Webpacker, React.js, and SASS.
 
+## Docker
+
+This project is dockerized. Please, for better setup, [install docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites) and
+[docker-compose](https://docs.docker.com/compose/install/#install-compose).
+
+
 ## Setup
 
+#### Create .env file
 ```
-bin/setup
+cp .env.sample .env
 ```
 
-Although you don't need to, you may run seed the project with `rake db:seed`.
+#### Build images
+```
+docker-compose build
+```
+
+#### Create schema from `db/schema.rb`
+```
+docker-composer run --rm web rails db:setup
+```
+
+Although you don't need to, you may run seed the project with
+`docker-compose run --rm web rails db:seed`.
 
 ## Server
-Since we are using Webpacker, in order to the project run the server properly
-we must also run webpack-dev-server alongside Puma. Foreman will allow us to run
-many processes as Heroku does, using Procfiles.
+To run the server and all related services, just run
 
 ```
-foreman start -f Procfile.dev
+docker-compose up
+# or
+docker-compose --rm web
 ```
 
 ## Testing
@@ -30,7 +48,7 @@ This project uses RSpec as its testing suite.
 To run all tests
 
 ```
-rspec
+docker-compose run --rm web rspec
 ```
 
 ## The API

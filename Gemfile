@@ -5,12 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.4.3'
+ruby '2.5.0'
 
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'ckeditor', '~> 4.2.4'
 gem 'devise', '~> 4.3'
 gem 'draper', '~> 3.0'
+gem 'dotenv-rails', '~> 2.2.0'
 gem 'ffaker'
 gem 'font-awesome-rails', '~> 4.7.0'
 gem 'jbuilder', '~> 2.5'
