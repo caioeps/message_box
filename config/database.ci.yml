@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: <%= ENV.fetch('POSTGRES_USER') %>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD') %>
+  pool: 5
+
+development:
+  <<: *default
+  database: message_box_development
+
+test:
+  <<: *default
+  database: message_box_test
+
+production:
+  <<: *default
+  database: message_box_production
