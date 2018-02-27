@@ -1,0 +1,55 @@
+version: '3.1'
+
+volumes:
+  bundle_cache:
+  node_modules:
+
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+      - webpack
+      - redis
+    volumes:
+      - bundle_cache:/bundle
+      - node_modules:/home/workspace/node_modules
+      - .:/home/workspace
+
+  webpack:
+    build: .
+    command: ./node_modules/.bin/webpack-dev-server --config config/webpack/development.js --host '0.0.0.0'
+    volumes:
+      - bundle_cache:/bundle
+      - node_modules:/home/workspace/node_modules
+      - .:/home/workspace
+    ports:
+      - 8080:8080
+
+  postgres:
+      image: postgres:10.2-alpine
+      environment:
+        POSTGRES_USER: $POSTGRES_USER
+        POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      ports:
+        - 5432:5432
+      volumes:
+        - ~/docker/message_box/postgres:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9090:8080
+
+  redis:
+    image: redis:4.0
+    ports:
+      - 6379:6379
+    volumes:
+      - ~/docker/message_box/redis:/var/lib/redis
+    command: redis-server --appendonly yes
+

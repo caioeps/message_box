@@ -6,14 +6,15 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.3-node-browsers
+      - image: circleci/ruby:2.5.0-node-browsers
         environment:
-          PGHOST: 127.0.0.1
-          PGUSER: root
-          PGPASSWORD: circleci_test
           RAILS_ENV: test
-      - image: circleci/postgres:9.6
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: circleci_test
+      - image: circleci/postgres:10.2-alpine
         environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: circleci_test
 
     working_directory: ~/repo
 
@@ -38,6 +39,8 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
+      - run: rm config/database.yml
+      - run: cp config/database.ci.yml config/database.yml
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
