@@ -24,3 +24,5 @@
 .env
 
 coverage
+
+.bash_history
