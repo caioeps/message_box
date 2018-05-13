@@ -3,6 +3,13 @@ SimpleCov.start 'rails' do
   add_filter do |file_name|
     file_name =~ /app\/channels|lib\/tasks/
   end
+
+  add_group "Channels", "app/channels"
+  add_group "Decorators", "app/decorators"
+  add_group "Forms", "app/forms"
+  add_group "Finders", "app/finders"
+  add_group "Serializers", "app/serializers"
+  add_group "Services", "app/services"
 end
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
