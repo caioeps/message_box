@@ -310,6 +310,8 @@ GEM
     sshkit (1.17.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sshkit-sudo (0.1.0)
+      sshkit (~> 1.8)
     temple (0.8.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
@@ -380,6 +382,7 @@ DEPENDENCIES
   slim-rails (~> 3.1.3)
   spring
   spring-watcher-listen (~> 2.0.0)
+  sshkit-sudo
   uglifier
   web-console (>= 3.3.0)
   webpacker

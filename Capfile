@@ -9,6 +9,8 @@ require 'capistrano/puma'
 require 'capistrano/dotenv'
 require 'capistrano/rails'
 
+require 'sshkit/sudo'
+
 install_plugin Capistrano::SCM::Git
 install_plugin Capistrano::Puma
 
