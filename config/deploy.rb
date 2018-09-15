@@ -61,6 +61,15 @@ namespace :deploy do
     end
   end
 
+  desc 'Install front dependencies'
+  task :yarn do
+    on roles(:web) do
+      within release_path do
+        execute "cd #{release_path} && yarn install --production --no-progress"
+      end
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -77,10 +86,11 @@ namespace :deploy do
     end
   end
 
-  after  :finishing,    :compile_assets
-  after  :finishing,    :cleanup
-  after  :finishing,    :copy_nginx_conf
-  after  :finishing,    :restart
+  after  :finishing,      :compile_assets
+  before :compile_assets, :'deploy:yarn'
+  after  :finishing,      :cleanup
+  after  :finishing,      :copy_nginx_conf
+  after  :finishing,      :restart
 end
 
 # ps aux | grep puma    # Get puma pid
