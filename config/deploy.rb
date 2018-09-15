@@ -68,8 +68,18 @@ namespace :deploy do
     end
   end
 
+  desc 'Updated Nginx conf'
+  task :copy_nginx_conf do
+    on roles(:app) do
+      execute "sudo rm /etc/nginx/sites-enabled/#{fetch(:application)}"
+      execute "sudo ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      execute 'sudo service nginx restart'
+    end
+  end
+
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
+  after  :finishing,    :copy_nginx_conf
   after  :finishing,    :restart
 end
 
