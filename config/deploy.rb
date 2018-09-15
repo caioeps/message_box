@@ -1,10 +1,11 @@
 server '184.73.78.45', roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:caioeps/message_box.git'
-set :application,     'message_box'
-set :user,            'deploy'
-set :puma_threads,    [1, 2]
-set :puma_workers,    0
+set :repo_url,     'git@github.com:caioeps/message_box.git'
+set :application,  'message_box'
+set :user,         'deploy'
+set :puma_threads, [1, 2]
+set :puma_workers, 0
+set :rails_env,    :production
 
 # Don't change these unless you know what you're doing
 set :pty,             true
