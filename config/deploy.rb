@@ -1,4 +1,4 @@
-server 'ec2-184-73-78-45.compute-1.amazonaws.com ', roles: [:web, :app, :db], primary: true
+server '184.73.78.45', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:caioeps/message_box.git'
 set :application,     'message_box'
