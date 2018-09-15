@@ -8,6 +8,7 @@ set :user,         'deploy'
 set :puma_threads, [1, 2]
 set :puma_workers, 0
 set :branch,       current_git_branch
+set :bundle_without, [:development, :test]
 
 # Don't change these unless you know what you're doing
 set :pty,             true
