@@ -2,15 +2,11 @@ def current_git_branch
   `git symbolic-ref HEAD 2> /dev/null`.strip.gsub(/^refs\/heads\//, '')
 end
 
-server '184.73.78.45', roles: [:app, :db], primary: true
-
 set :repo_url,     'git@github.com:caioeps/message_box.git'
 set :application,  'message_box'
 set :user,         'deploy'
 set :puma_threads, [1, 2]
 set :puma_workers, 0
-set :stage,        'production'
-set :rails_env,    'production'
 set :branch,       current_git_branch
 
 # Don't change these unless you know what you're doing
