@@ -70,7 +70,7 @@ namespace :deploy do
 
   desc 'Updated Nginx conf'
   task :copy_nginx_conf do
-    on roles(:app) do
+    on roles(:app), in: :sequence, wait: 1 do
       execute :sudo, "rm /etc/nginx/sites-enabled/#{fetch(:application)}"
       execute :sudo, "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
       execute :sudo, 'service nginx restart'
