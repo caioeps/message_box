@@ -8,13 +8,16 @@ class CreateMessage
     OpenStruct.new(
       created?: !!create_message,
       message_form: message_form,
-      message: message_form.model)
+      message: message)
   end
 
   private
 
   def create_message
-    message_form.save if message_form.validate(normalized_message_params)
+    return unless message_form.validate(normalized_message_params)
+    updated = message_form.save
+    Messages::ProcessWorker.perform_in 30.seconds, message.id
+    updated
   end
 
   def errors
@@ -31,5 +34,9 @@ class CreateMessage
 
   def valid_message?
     @valid_message ||= message_form.validate(@message_params)
+  end
+
+  def message
+    message_form.model
   end
 end

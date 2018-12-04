@@ -19,6 +19,7 @@ gem 'material_icons', '~> 2.2.1'
 gem 'materialize-sass'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
+gem 'sidekiq', '~> 5.2.3'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'slim-rails', '~> 3.1.3'
 gem 'rails', '~> 5.1.4'
@@ -46,6 +47,8 @@ group :development do
   gem 'capistrano-rails',   require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano3-puma',   require: false
+  gem 'guard'
+  gem 'guard-rspec', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
   gem 'spring'
