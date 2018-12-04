@@ -8,6 +8,8 @@ end
 ruby '2.5.0'
 
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'asset_sync'
+gem 'fog-aws'
 gem 'ckeditor', '~> 4.2.4'
 gem 'devise', '~> 4.3'
 gem 'draper', '~> 3.0'
