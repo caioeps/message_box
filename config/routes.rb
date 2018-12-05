@@ -9,9 +9,6 @@ Rails.application.routes.draw do
              }
 
   namespace :api do
-    resources :messages, only: %i[index create show],
-                         defaults: { format: :json }
-
     namespace :messages do
       resources :archives, only: %i[index]
       resources :sents, only: %i[index]
@@ -20,6 +17,8 @@ Rails.application.routes.draw do
         resources :toggle, only: %i[update]
       end
     end
+
+    resources :messages, only: %i[index create show], defaults: { format: :json }
   end
 
   namespace :messages do
