@@ -16,6 +16,9 @@ if defined?(AssetSync)
     # config.fog_scheme = "http"
     config.fog_directory = ENV['FOG_DIRECTORY']
 
+		# Disable automatic run on precompile in order to attach to webpacker rake task
+    config.run_on_precompile = false
+
     # Invalidate a file on a cdn after uploading files
     # config.cdn_distribution_id = "12345"
     # config.invalidate = ['file1.js']
