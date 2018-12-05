@@ -14,6 +14,7 @@ RSpec.describe Messages::ProcessWorker, type: :worker do
     expect(IgnoreCurseWords).to receive(:new).with(message).and_call_original
     expect_any_instance_of(IgnoreCurseWords).to receive(:call)
     expect(message).to receive(:save)
-    expect { subject }.to change(message, :status).to('processed')
+    subject
+    expect(message.processed_status?).to be_truthy
   end
 end
