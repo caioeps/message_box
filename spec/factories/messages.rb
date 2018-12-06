@@ -4,6 +4,7 @@ FactoryBot.define do
     body        'Lorem ipsum dolor amet.'
     read_at     nil
     archived_at nil
+    status :processed
 
     association :receiver, factory: :user
     association :sender,   factory: :user
@@ -18,6 +19,10 @@ FactoryBot.define do
 
     trait :with_large_body do
       body 'a' * 300
+    end
+
+    trait :pending do
+      status :pending
     end
   end
 end

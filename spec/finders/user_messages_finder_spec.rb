@@ -35,4 +35,16 @@ RSpec.describe UserMessagesFinder, type: :finder do
       expect(subject).to contain_exactly(archived_message)
     end
   end
+
+  describe '#sent' do
+    let(:sender) { create(:user) }
+    let!(:received_message) { create(:message, receiver: receiver) }
+    let!(:sent_message) { create(:message, sender: sender) }
+
+    subject { described_class.new(user: sender).sent.messages }
+
+    it 'returns only sent messages' do
+      expect(subject).to contain_exactly(sent_message)
+    end
+  end
 end

@@ -6,6 +6,8 @@ class Message < ApplicationRecord
   scope :not_archived, -> { where(archived_at: nil) }
   scope :read, -> { where.not(read_at: nil) }
 
+  enum status: { pending: 0, processed: 1 }, _suffix: true
+
   def archived?
     !!archived_at
   end

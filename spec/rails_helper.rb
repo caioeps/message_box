@@ -1,4 +1,6 @@
 require 'simplecov'
+require 'sidekiq/testing'
+
 SimpleCov.start 'rails' do
   add_filter do |file_name|
     file_name =~ /app\/channels|lib\/tasks/

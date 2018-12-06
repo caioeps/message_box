@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
+  it { is_expected.to define_enum_for(:status) }
+
+  it { is_expected.to respond_to :pending_status? }
+  it { is_expected.to respond_to :processed_status? }
+
   it do
     is_expected
       .to have_db_column(:subject)
@@ -17,7 +22,7 @@ RSpec.describe Message, type: :model do
 
   it { is_expected.to have_db_index(:sender_id) }
   it { is_expected.to have_db_index(:receiver_id) }
-  it { is_expected.to have_db_index([:receiver_id, :sender_id]) }
+  it { is_expected.to have_db_index(%i[receiver_id sender_id]) }
 
   it { is_expected.to belong_to(:sender).class_name('User') }
   it { is_expected.to belong_to(:receiver).class_name('User') }

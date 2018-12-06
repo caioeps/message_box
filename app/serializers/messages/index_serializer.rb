@@ -1,6 +1,6 @@
 module Messages
   class IndexSerializer < ActiveModel::Serializer
-    attributes :id, :subject, :created_at, :read, :archived
+    attributes :id, :subject, :created_at, :read, :archived, :status
 
     belongs_to :sender
     belongs_to :receiver

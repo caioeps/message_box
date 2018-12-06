@@ -8,6 +8,8 @@ end
 ruby '2.5.0'
 
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'asset_sync'
+gem 'fog-aws'
 gem 'ckeditor', '~> 4.2.4'
 gem 'devise', '~> 4.3'
 gem 'draper', '~> 3.0'
@@ -16,9 +18,10 @@ gem 'ffaker'
 gem 'font-awesome-rails', '~> 4.7.0'
 gem 'jbuilder', '~> 2.5'
 gem 'material_icons', '~> 2.2.1'
-gem 'materialize-sass'
+gem 'materialize-sass', git: 'https://github.com/mkhairi/materialize-sass.git', branch: 'v0.100'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
+gem 'sidekiq', '~> 5.2.3'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'slim-rails', '~> 3.1.3'
 gem 'rails', '~> 5.1.4'
@@ -46,6 +49,8 @@ group :development do
   gem 'capistrano-rails',   require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano3-puma',   require: false
+  gem 'guard'
+  gem 'guard-rspec', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
   gem 'spring'
