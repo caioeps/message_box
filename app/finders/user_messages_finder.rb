@@ -3,7 +3,8 @@ class UserMessagesFinder
 
   def initialize(messages: Message.all, user:)
     @user = user
-    @messages = messages.order(created_at: :desc)
+    @messages = messages.processed_status
+                        .order(created_at: :desc)
                         .includes(:receiver, :sender)
   end
 
@@ -20,5 +21,12 @@ class UserMessagesFinder
   def sent
     @messages = @messages.merge(user.sent_messages)
     self
+  end
+
+  def all_from_user
+    sent_messages = user.sent_messages
+    received_messages = user.received_messages
+
+    @messages = Message.from("(#{sent_messages.to_sql} UNION #{received_messages.to_sql}) AS messages")
   end
 end
